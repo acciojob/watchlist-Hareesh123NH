@@ -21,12 +21,16 @@ public class MovieRepository {
 
     public void saveMovie(Movie movie){
         // your code here
-        movieMap.put(movie.getName(),movie);
+        if(!movieMap.containsKey(movie.getName())){
+            movieMap.put(movie.getName(),movie);
+        }    
     }
 
     public void saveDirector(Director director){
         // your code here
-        directorMap.put(director.getName(),director);
+        if(!directorMap.containsKey(director.getName())){
+            directorMap.put(director.getName(),director);
+        }
     }
 
     public void saveMovieDirectorPair(String movie, String director){
@@ -36,6 +40,7 @@ public class MovieRepository {
                 List<String> list=directorMovieMapping.get(director);
                 if(!list.contains(movie)){
                     list.add(movie);
+                    directorMovieMapping.put(director,list);
                 }
             }
             else{
