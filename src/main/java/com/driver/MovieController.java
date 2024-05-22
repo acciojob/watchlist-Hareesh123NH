@@ -20,11 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class MovieController {
     @Autowired
     MovieService movieService;
-
-    @PostMapping("/add-movie")
     public MovieController(){
         movieService=new MovieService();
     }
+
+    @PostMapping("/add-movie")
     public ResponseEntity<String> addMovie(@RequestBody Movie movie){
         // your code here
         movieService.addMovie(movie);
